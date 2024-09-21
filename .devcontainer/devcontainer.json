@@ -67,7 +67,8 @@
 				"donjayamanne.githistory",
 				"ms-azuretools.vscode-docker",
 				"jebbs.plantuml",
-				"mongodb.mongodb-vscode"
+				"mongodb.mongodb-vscode",
+				"ritwickdey.LiveServer"
 			]
 		}
 	}
