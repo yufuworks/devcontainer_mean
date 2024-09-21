@@ -69,7 +69,14 @@
 				"jebbs.plantuml",
 				"mongodb.mongodb-vscode",
 				"ritwickdey.LiveServer"
-			]
+			],
+			"settings": {
+				"window.openFilesInNewWindow": "on",
+				"workbench.editorAssociations": {
+					"*.html": "default"
+				},
+				"openInBrowser.default": "chrome" // Chromeをデフォルトブラウザに指定
+			}
 		}
 	}
 	// Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
