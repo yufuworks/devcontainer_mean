@@ -6,7 +6,6 @@ RUN apt-get update && apt-get install -y curl
 # nvmのインストール
 ENV NVM_DIR /usr/local/nvm
 ENV NODE_VERSION lts/*
-
 RUN mkdir -p $NVM_DIR
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
@@ -16,13 +15,9 @@ RUN . $NVM_DIR/nvm.sh && \
     nvm alias default $NODE_VERSION && \
     nvm use default
 
-# 他のNode.jsバージョンをインストール（オプション）
-RUN . $NVM_DIR/nvm.sh && \
-    nvm install 14 && \
-    nvm install 16
-
-# 環境変数の設定
+# nvmの環境変数の設定
 ENV PATH $NVM_DIR/versions/node/$(nvm current)/bin:$PATH
+
 # 必要なパッケージのインストールとロケールの設定:git動作に必要 ubuntuの場合
 RUN apt-get update && apt-get install -y locales
 RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen
