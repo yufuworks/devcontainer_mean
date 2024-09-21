@@ -7,7 +7,7 @@ services:
     ports:
       - 10001:4200
     volumes:
-      - project:/user/local/app
+      # - project:/user/local/app
       - ~/.gitconfig:/root/.gitconfig
       - ~/.ssh:/root/.ssh:ro
     stdin_open: true
@@ -31,5 +31,5 @@ networks:
     driver: bridge
 
 volumes:
-  project: {}
+  # project: {}
   mongodb-data: {}
