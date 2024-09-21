@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  web:
+    build: 
+      context: .
+    ports:
+      - 10001:4200
+    volumes:
+      - project:/user/local/app
+      - ~/.gitconfig:/root/.gitconfig
+      - ~/.ssh:/root/.ssh:ro
+    stdin_open: true
+    tty: true
+    networks:
+      - dev-network
+
+  # Add MongoDB service
+  db:
+    image: mongo:latest
+    restart: unless-stopped
+    volumes:
+      - mongodb-data:/data/db
+    ports:
+      - "10011:27017"
+    networks:
+      - dev-network
+
+networks:
+  dev-network:
+    driver: bridge
+
+volumes:
+  project: {}
+  mongodb-data: {}
