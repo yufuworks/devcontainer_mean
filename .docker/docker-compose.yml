@@ -3,7 +3,8 @@ version: '3'
 services:
   web:
     build: 
-      context: .
+      context: ./web/
+    container_name: web
     ports:
       - 10001:4200
     volumes:
@@ -15,14 +16,28 @@ services:
     networks:
       - dev-network
 
-  # Add MongoDB service
+  stub:
+    build:
+      context: ./mocky/
+    container_name: mocky
+    volumes:
+      - "./mocky/app:/node/app"
+    ports:
+      - "10010:4321"
+    networks:
+      - dev-network
+    tty: true
+    working_dir: /node
+    entrypoint: node /node/app/mocky.js
+
   db:
     image: mongo:latest
+    container_name: db
     restart: unless-stopped
     volumes:
       - mongodb-data:/data/db
     ports:
-      - "10011:27017"
+      - "10002:27017"
     networks:
       - dev-network
 

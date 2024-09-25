@@ -1,0 +1,31 @@
+{
+  // IntelliSense を使用して利用可能な属性を学べます。
+  // 既存の属性の説明をホバーして表示します。
+  // 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "firefox を起動する",
+      "type": "firefox",
+      "request": "launch",
+      "reAttach": true,
+      // "request": "attach",
+      "url": "http://127.0.0.1:5500/", // デバッグ対象のURL
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "name": "Chrome を起動する", // デバッグ構成の名前
+      "type": "chrome", // 使用するデバッガーのタイプ（ここではChrome）
+      "request": "launch", // デバッグリクエストのタイプ（launchは新しいウィンドウを開く）
+      "url": "http://127.0.0.1:5500/", // デバッグ対象のURL
+      "webRoot": "${workspaceFolder}" // アプリケーションのルートディレクトリ（HTMLファイルがある場所）
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug express server",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/srv/index.js"
+    }
+  ]
+}
