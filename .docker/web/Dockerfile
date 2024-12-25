@@ -1,15 +1,12 @@
-FROM node:lts
-
-# 必要なツールのインストール
-RUN apt-get update && apt-get install -y curl
+FROM node:20.14.0
 
 # 必要なパッケージのインストールとロケールの設定:git動作に必要 ubuntuの場合
 RUN apt-get update && apt-get install -y locales
-RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen
-RUN update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
+RUN sed -i '/ja_JP.UTF-8/s/^# //g' /etc/locale.gen && locale-gen
+RUN update-locale LANG=ja_JP.UTF-8 LC_ALL=ja_JP.UTF-8
+ENV LANG ja_JP.UTF-8
+ENV LANGUAGE ja_JP:ja
+ENV LC_ALL ja_JP.UTF-8
 
 # git-secretsのインストール
 RUN git clone https://github.com/awslabs/git-secrets.git /tmp/git-secrets \
@@ -17,9 +14,8 @@ RUN git clone https://github.com/awslabs/git-secrets.git /tmp/git-secrets \
     && make install \
     && rm -rf /tmp/git-secrets
 
-# Angular CLIのグローバルインストール
-# RUN npm install -g @angular/cli
-RUN npm install -g @angular/cli@17.2.0
+# Angular CLIのグローバルインストール 18系
+RUN npm install -g @angular/cli@18
 
 # 作業ディレクトリの設定
 WORKDIR /workspace

@@ -8,13 +8,13 @@ services:
     ports:
       - 10001:4200
     volumes:
-      # - project:/user/local/app
       - ~/.gitconfig:/root/.gitconfig
       - ~/.ssh:/root/.ssh:ro
     stdin_open: true
     tty: true
     networks:
       - dev-network
+    command: /bin/bash -c "npm ci"
 
   stub:
     build:

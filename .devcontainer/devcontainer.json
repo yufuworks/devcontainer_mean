@@ -68,7 +68,10 @@
 				"ms-azuretools.vscode-docker",
 				"jebbs.plantuml",
 				"mongodb.mongodb-vscode",
-				"ritwickdey.LiveServer"
+				"ritwickdey.LiveServer",
+				"github.vscode-pull-request-github",
+				"github.copilot",
+				"github.copilot-chat"
 			],
 			"settings": {
 				"window.openFilesInNewWindow": "on",
