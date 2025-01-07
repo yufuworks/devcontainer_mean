@@ -71,7 +71,8 @@
 				"ritwickdey.LiveServer",
 				"github.vscode-pull-request-github",
 				"github.copilot",
-				"github.copilot-chat"
+				"github.copilot-chat",
+				"42crunch.vscode-openapi"
 			],
 			"settings": {
 				"window.openFilesInNewWindow": "on",

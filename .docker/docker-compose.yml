@@ -9,12 +9,38 @@ services:
       - 10001:4200
     volumes:
       - ~/.gitconfig:/root/.gitconfig
+      # :ro > read onry コンテナ内から読み取るだけでSSHキーの変更がされない
       - ~/.ssh:/root/.ssh:ro
     stdin_open: true
     tty: true
     networks:
       - dev-network
     command: /bin/bash -c "npm ci"
+
+  swagger-editor:
+    image: swaggerapi/swagger-editor
+    container_name: "swagger-editor"
+    ports:
+      - "10011:8080"
+
+  swagger-ui:
+    image: swaggerapi/swagger-ui
+    container_name: "swagger-ui"
+    ports:
+      - "10012:8080"
+    volumes:
+      - ./api/openapi.yaml:/openapi.yaml
+    environment:
+      SWAGGER_JSON: /openapi.yaml
+
+  swagger-api:
+    image: stoplight/prism:3
+    container_name: "swagger-api"
+    ports:
+      - "10013:4010"
+    command: mock -h 0.0.0.0 /openapi.yaml
+    volumes:
+      - ./api/openapi.yaml:/openapi.yaml
 
   stub:
     build:
@@ -46,5 +72,4 @@ networks:
     driver: bridge
 
 volumes:
-  # project: {}
   mongodb-data: {}
