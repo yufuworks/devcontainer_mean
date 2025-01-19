@@ -20,10 +20,10 @@
 	// connected. This is typically a file mount in .devcontainer/docker-compose.yml
 	// docker-compose.ymlでワークスペース相当をマウントする設定を追加
 	"mounts": [
-		"source=${localWorkspaceFolder},target=/workspaces/${localWorkspaceFolderBasename},type=bind"
+		"source=${localWorkspaceFolder}/src,target=/workspaces/src/,type=bind"
 	],
 	// ワークスペースをローカルフォルダがマウントされる前提で指定
-	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"workspaceFolder": "/workspaces/src/",
 	"features": {
 		"ghcr.io/devcontainers/features/node:1": {
 			"version": "lts"
