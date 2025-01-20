@@ -1,4 +1,5 @@
-FROM node:20.14.0
+ARG VARIANT="20-bullseye"
+FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-${VARIANT}
 
 # 必要なパッケージのインストールとロケールの設定:git動作に必要 ubuntuの場合
 RUN apt-get update && apt-get install -y locales
@@ -15,7 +16,7 @@ RUN git clone https://github.com/awslabs/git-secrets.git /tmp/git-secrets \
     && rm -rf /tmp/git-secrets
 
 # Angular CLIのグローバルインストール 18系
-RUN npm install -g @angular/cli@18
+RUN npm install -g @angular/cli@18 @angular/core 
 
 # 作業ディレクトリの設定
 WORKDIR /workspace

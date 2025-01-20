@@ -1,7 +1,7 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/docker-existing-docker-compose
 {
-	"name": "mean_angular@17",
+	"name": "mean_angular@18",
 
 	// Update the 'dockerComposeFile' list if you have more compose files or use different names.
 	// The .devcontainer/docker-compose.yml file contains any overrides you need/want to make.
@@ -75,6 +75,7 @@
 				"42crunch.vscode-openapi"
 			],
 			"settings": {
+				"terminal.integrated.shell.linux": "/bin/bash",
 				"window.openFilesInNewWindow": "on",
 				"workbench.editorAssociations": {
 					"*.html": "default"
